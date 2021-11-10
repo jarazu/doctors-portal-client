@@ -6,12 +6,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Appointment from './Pages/Appointment/Appointment/Appointment';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
+        <Route path="/appointment" element={<Appointment />} />
         <Route path="/" element={<Home />} />
         <Route path="users/*" element={<Home />} />
       </Routes>
