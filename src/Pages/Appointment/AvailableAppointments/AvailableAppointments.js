@@ -1,12 +1,61 @@
 import { toDate } from 'date-fns';
 import React from 'react';
+import Grid from '@mui/material/Grid';
+import { Container } from '@mui/material';
+import Booking from '../Booking/Booking';
+import Typography from '@mui/material/Typography';
 
-const AvailableAppointments = ({date}) => {
-    console.log('date', date)
+
+const bookings = [
+    {
+        id: 1,
+        name: 'Teeth Orthodontics',
+        time:'08.00 AM - 09.00 AM',
+        space: 10
+    },
+    {
+        id: 2,
+        name: 'Cosmetic Dentistry',
+        time:'09.00 AM - 10.00 AM',
+        space: 8
+    },
+    {
+        id: 3,
+        name: 'Teeth Cleaning',
+        time:'09.00 AM - 10.00 AM',
+        space: 3
+    },
+    {
+        id: 4,
+        name: 'Cavity Protection',
+        time:'10.00 AM - 11.00 AM',
+        space: 9
+    },
+    {
+        id: 5,
+        name: 'Pediatric Dental',
+        time:'06.00 PM - 07.00 PM',
+        space: 10
+    },
+    {
+        id: 6,
+        name: 'Oral Surgery',
+        time:'07.00 PM - 08.00 PM',
+        space: 10
+    }
+]
+const AvailableAppointments = ({date}) => {    
+
     return (
-        <div>
-            <h2>Available Appointments {date.toDateString()}</h2>
-        </div>
+        <Container>
+            <Typography sx={{color:'info.main', py:5, fontWeight: 600}} variant="h4">Available Appointments {date.toDateString()}</Typography>
+            <Grid container spacing={2}>
+                {
+                    bookings.map(booking => <Booking key={Booking.id} booking={booking}/>)
+                }
+                
+            </Grid>
+        </Container>
     );
 };
 
