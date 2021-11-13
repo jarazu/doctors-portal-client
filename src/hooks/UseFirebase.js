@@ -47,7 +47,7 @@ const UserFirebase = () =>{
     // save user after registration
     const saveuser = (email, name, posttype) => {
         const user = {email, displayName: name};
-        fetch('http://localhost:5000/users', {
+        fetch('https://evening-peak-97843.herokuapp.com/users', {
             method: posttype,
             headers: {
                 'content-type': 'application/json'
@@ -130,7 +130,7 @@ const UserFirebase = () =>{
     },[]);
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://evening-peak-97843.herokuapp.com/users/${user.email}`)
         .then(res => res.json())
         .then(data => setCheckAdmin(data.admin))
     },[user.email]);

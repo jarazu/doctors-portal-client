@@ -26,8 +26,7 @@ const BookingModal = ({open, handleClose, booking, date, setBookingSuccess}) => 
     const handleBookSubmit = e => {
         const appointMent = {...bookingInfo, time, serviceName: name, date: date.toLocaleDateString()}
 
-        // http://localhost:5000/appointments 
-        fetch('http://localhost:5000/appointments', {
+        fetch('https://evening-peak-97843.herokuapp.com/appointments', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
