@@ -7,8 +7,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
+    const {user, logOut} = useAuth();
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -26,7 +28,16 @@ const Navigation = () => {
                     News
                 </Typography>
                 <Link to='/appointment'>Appointment</Link>
-                <Button color="inherit">Login</Button>
+                {
+                    user?.email? 
+                        <Box>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to='/dashboard'><Button color="inherit">Dashboard</Button></Link>
+
+                            <Button color="inherit"  onClick={logOut}>Logout</Button>
+                        </Box>
+                     : <Link style={{textDecoration: 'none', color: 'white'}} to='/login'><Button color="inherit">Login</Button></Link>
+                }
+                
                 </Toolbar>
             </AppBar>
         </Box>

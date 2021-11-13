@@ -1,7 +1,7 @@
 import { toDate } from 'date-fns';
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { Container } from '@mui/material';
+import { Alert, Container } from '@mui/material';
 import Booking from '../Booking/Booking';
 import Typography from '@mui/material/Typography';
 
@@ -45,13 +45,14 @@ const bookings = [
     }
 ]
 const AvailableAppointments = ({date}) => {    
-
+    const [bookingSuccess, setBookingSuccess] = useState(false);
     return (
         <Container>
             <Typography sx={{color:'info.main', py:5, fontWeight: 600}} variant="h4">Available Appointments {date.toDateString()}</Typography>
+            {bookingSuccess && <Alert severity="success">Booking Successfull</Alert> }
             <Grid container spacing={2}>
                 {
-                    bookings.map(booking => <Booking key={Booking.id} booking={booking}/>)
+                    bookings.map(booking => <Booking key={Booking.id} booking={booking} date={date} setBookingSuccess={setBookingSuccess} />)
                 }
                 
             </Grid>

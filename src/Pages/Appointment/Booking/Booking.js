@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import BookingModal from '../BookingModal/BookingModal';
 
-const Booking = ({booking}) => {
+const Booking = ({booking, date, setBookingSuccess}) => {
     const {name, time, space} = booking;
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -26,7 +26,7 @@ const Booking = ({booking}) => {
                     <Button onClick={handleOpen} variant="contained">BOOK APPOINTMENT</Button>
                 </Paper>
             </Grid>
-            <BookingModal open={open} handleClose={handleClose} booking={booking} />
+            <BookingModal date={date} open={open} handleClose={handleClose} booking={booking} setBookingSuccess={setBookingSuccess} />
         </>
     );
 };
